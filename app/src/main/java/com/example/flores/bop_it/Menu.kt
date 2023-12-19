@@ -24,7 +24,7 @@ class Menu : AppCompatActivity() {
             finish()
         }
         puntaje.setOnClickListener{
-            val intent = Intent(this@Menu, Puntaje::class.java)
+            val intent = Intent(this@Menu, Puntaje_Guardado::class.java)
             startActivity(intent)
             finish()
         }

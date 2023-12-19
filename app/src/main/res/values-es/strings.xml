@@ -30,4 +30,9 @@
     <string name="c">Manten Presionado</string>
     <string name="d">Desplazar</string>
     <string name="e">Lanzamiento</string>
+
+    <string name="Nombre">Nommbre del Jugador</string>
+    <string name="Fecha">Fecha</string>
+    <string name="Hora">Hora</string>
+    <string name="PuntajeA">Puntaje</string>
 </resources>

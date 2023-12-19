@@ -30,4 +30,9 @@
     <string name="c">Hold down</string>
     <string name="d">Displace</string>
     <string name="e">Launch</string>
+
+    <string name="Nombre">Player Name</string>
+    <string name="Fecha">Date</string>
+    <string name="Hora">Hour</string>
+    <string name="PuntajeA">Score</string>
 </resources>
