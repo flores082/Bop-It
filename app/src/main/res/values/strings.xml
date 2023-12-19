@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Bop-it!</string>
+    <string name="ir_menu">Ir a menu</string>
+    <string name="ir_menu_verdadero">si volver a motrar</string>
+    <string name="ir_menu_falso">No volver a motrar</string>
+    <string name="cambio">mostrar intruciones</string>
+
+    <string name="Juego">Jugar</string>
+    <string name="Preferencia">Preferencias</string>
+    <string name="Presentacion">Presentación</string>
+    <string name="Salir">Salir</string>
+</resources>
