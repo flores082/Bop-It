@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966">
+        app:layout_constraintVertical_bias="0.989">
 
         <TextView
             android:id="@+id/textView"
@@ -34,8 +34,8 @@
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textColor="@color/white"
             android:text="@string/cambio"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <Button
@@ -43,9 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:backgroundTint="@color/azul"
             android:text="@string/ir_menu_verdadero"
             android:textSize="20dp"
-            android:backgroundTint="@color/azul"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -62,8 +62,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="348dp"
-        android:layout_height="412dp"
+        android:layout_width="358dp"
+        android:layout_height="451dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="446dp"
             android:gravity="center"
             android:text="@string/intruccion"
             android:textColor="@color/white"

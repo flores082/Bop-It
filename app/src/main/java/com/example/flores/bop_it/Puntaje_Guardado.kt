@@ -79,12 +79,12 @@ class Puntaje_Guardado : AppCompatActivity() {
 
     fun editProducto(puntaje: Puntaje) {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Eliminar Chiste?")
+        builder.setTitle(getString(R.string.Eliminar))
 
-        builder.setPositiveButton("Eliminar Chiste") { dialog, _ ->
+        builder.setPositiveButton(getString(R.string.E)) { dialog, _ ->
             val ProdDao = baseDatos.puntajeDao()
             ProdDao.delete(ProdDao.findByNombreFechaHora(puntaje.nombre,puntaje.fecha,puntaje.hora)!!)
-            Log.i("AAAAA", "ELIMINADO")
+            Log.i("AAAAA", getString(R.string.EL))
             val users: List<Puntaje> = ProdDao.getAll()
             //chists.clear()
             adapter.clear()
@@ -96,7 +96,7 @@ class Puntaje_Guardado : AppCompatActivity() {
             dialog.dismiss()
         }
 
-        builder.setNegativeButton("Cancelar") { dialog, _ ->
+        builder.setNegativeButton(R.string.C) { dialog, _ ->
 
             dialog.dismiss()
             // Puedes realizar acciones adicionales al hacer clic en Cancelar
@@ -114,7 +114,8 @@ class Puntaje_Guardado : AppCompatActivity() {
         val maxHora = List.maxByOrNull { it.puntaje }?.hora ?: 0
         val maxPuntaje = List.maxByOrNull { it.puntaje }?.puntaje ?: 0
 
-        textView.text = "Nombre: $maxNombre\nFecha: $maxFecha\nHora: $maxHora\nPuntaje: $maxPuntaje"
+        textView.text = "${getString(R.string.nombre)}: $maxNombre\n${getString(R.string.Fecha)}: "+
+                "$maxFecha\n${getString(R.string.Hora)}: $maxHora\n${getString(R.string.PuntajeA)}: $maxPuntaje"
     }
 
 }

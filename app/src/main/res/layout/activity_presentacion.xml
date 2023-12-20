@@ -4,4 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentacion"/>
+    android:background="@color/black"
+    tools:context=".Presentacion">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="409dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="187dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/img_2" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/Creador"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="376dp"
+            android:layout_height="327dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/Hola"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/V"
+            android:backgroundTint="@color/azul"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

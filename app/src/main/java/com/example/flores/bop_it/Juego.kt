@@ -272,7 +272,7 @@ class Juego : AppCompatActivity(),
         val dialogoView = layoutInflater.inflate(R.layout.dialog_ingreso_datos, null)
         val builder = AlertDialog.Builder(this)
             .setView(dialogoView)
-            .setTitle("Ingresar Datos")
+            .setTitle(getString(R.string.IN))
 
         // Configurar el diálogo como modal y deshabilitar el cierre al tocar fuera
         builder.setCancelable(false)

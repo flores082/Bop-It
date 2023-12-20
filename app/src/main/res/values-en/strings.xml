@@ -17,8 +17,8 @@
         it has an exit button from the game, a presentation button where you can get to know me, a preferences button
         if you want to change something in the application, one that would show the scores on the screen and also
         the highest. Finally, also a button to Play the game. Words will come out and you have to do what they tell you.
-        press, shake, etc.... you will have points for each correct one and if you make a mistake once the game is over,
-        you will have the option to save your score at the end.
+        press, shake, etc.... you will have points for each correct one and if you make a mistake once the game is over or if
+        you run out of time the juice will end, you will have the option to save your score at the end.
     </string>
 
     <string name="P">Score</string>
@@ -41,4 +41,21 @@
     <string name="pedido">Want the instruction screen to be displayed.</string>
     <string name="explicacion">In the future there will be more possibilities of changes, while enjoying what is already.</string>
     <string name="V">Return menu</string>
+
+    <string name="nombre">Name</string>
+    <string name="C">Cancel</string>
+    <string name="G">Keep</string>
+    <string name="Eliminar">Delete game?</string>
+    <string name="E">Delete game</string>
+    <string name="EL">REMOVE</string>
+    <string name="IN">Enter Data</string>
+
+    <string name="Creador">Creator: Michel Flores</string>
+    <string name="Hola">
+        Hello, this game is created with Android studio. It\'s the Bop-It! Alone,
+        play until you have the most points, if you achieve this you will be in first place among
+        the saved players. This project has its game saved in Room and the options saved with
+        persistence, it has its point variables and information to save such as name, date and time.
+        Also other implementations of art, sounds, music and etc...
+    </string>
 </resources>

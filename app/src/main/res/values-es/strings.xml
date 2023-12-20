@@ -17,7 +17,8 @@
         tiene un botón de salida del juego, uno de presentación donde podrás conocerme, uno de preferencias si es que
         quieres cambiar algo de la aplicación, uno que mostrara en pantalla los puntajes y también el más alto. Por último,
         también un botón para Jugar el juego. saldrán palabras y tú tienes que hacer lo que te dicen. presionar, agitar,
-        etc.… tendrás puntos por cada correcta y si te equivocas una vez el juego terminara, tendrán la opción de guardar
+        etc.… tendrás puntos por cada correcta y si te equivocas una vez el juego terminarao si se te acaba el tiempo el jugo terminara
+        , tendrán la opción de guardar
         tu puntaje al finalizar.
     </string>
 
@@ -41,4 +42,22 @@
     <string name="pedido">Desea que se muestre la pantalla de instrucciones.</string>
     <string name="explicacion">En el futuro habrá mas posibilidades de cambios, mientras disfruta lo que ya esta.</string>
     <string name="V">volver a menú</string>
+
+    <string name="nombre">Nombre</string>
+    <string name="C">Cancelar</string>
+    <string name="G">Guardar</string>
+    <string name="Eliminar">Eliminar partida?</string>
+    <string name="E">Eliminar partida</string>
+    <string name="EL">ELIMINADO</string>
+    <string name="IN">Ingresar Datos</string>
+
+    <string name="Creador">Creador: Michel Flores</string>
+    <string name="Hola">
+        Hola, este juego es creado con Android estudio.
+        Es el ¡Bop-It! en solitario, juega asta tener la mayor cantidad de puntos,
+        si lo logras estarás en el primer lugar de los jugadores guardados. Este proyecto
+        tiene su guardado de partida en Room y el guardado de las opciones con persistencia,
+        tiene sus variables de puntos e información para guardar como nombre, fecha y hora.
+        También otras implementaciones de arte sonidos, música y etc…
+    </string>
 </resources>
