@@ -58,4 +58,9 @@
         persistence, it has its point variables and information to save such as name, date and time.
         Also other implementations of art, sounds, music and etc...
     </string>
+
+    <string name="F">Facil</string>
+    <string name="M">Medio</string>
+    <string name="Di">Dificil</string>
+    <string name="I">Insane</string>
 </resources>

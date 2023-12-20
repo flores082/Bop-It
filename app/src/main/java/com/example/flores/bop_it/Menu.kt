@@ -30,6 +30,7 @@ class Menu : AppCompatActivity() {
 
         jugar.setOnClickListener{
             mediaPlayer.start()
+            mediaPlayerA?.stop()
             val intent = Intent(this@Menu, Juego::class.java)
             startActivity(intent)
             finish()
@@ -56,6 +57,7 @@ class Menu : AppCompatActivity() {
             mediaPlayer.start()
             // Detener la reproducción
             mediaPlayerA?.stop()
+            mediaPlayerA?.release()
             finishAffinity()
             // Cierra la aplicación por completo
             System.exit(0)

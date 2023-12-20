@@ -23,17 +23,24 @@ import androidx.room.Room
 import com.example.flores.bop_it.Dao.PuntajeDatabase
 import com.example.flores.bop_it.Entity.Puntaje
 import android.content.Context
+import android.media.MediaPlayer
 import android.view.View
+import android.widget.ImageView
 
 
 class Juego : AppCompatActivity(),
     GestureDetector.OnGestureListener,
     GestureDetector.OnDoubleTapListener, SensorEventListener {
 
+    private var mediaPlayerA: MediaPlayer? = null
+
+    private lateinit var si: MediaPlayer
+    private lateinit var derrota: MediaPlayer
 
     private lateinit var TextView: TextView
     private lateinit var TextViewP: TextView
     private lateinit var P: TextView
+    private lateinit var dificultad: TextView
 
     private lateinit var gestureDetector: GestureDetector
     private lateinit var Accelerometro: Sensor
@@ -46,6 +53,7 @@ class Juego : AppCompatActivity(),
 
     private var random = Random()
     var palabra = arrayOf(a, b, c, d, e)
+    private lateinit var imagen: ImageView
 
     /*<string name="a">Agita</string>
     <string name="b">Presiona una vez</string>
@@ -54,26 +62,43 @@ class Juego : AppCompatActivity(),
     <string name="e">Lanzamiento</string>*/
 
     private var palabraActual: String = ""
+    private var dificultadActual: Int = R.string.F
     private var juegoTerminado = false
     private var Accion = false
-    private var Puntaje: Int = 7
+    private var Puntaje: Int = 0
+    private var aciertos: Int = 0
 
     private var handler = Handler(Looper.getMainLooper())
+    private var handlerD = Handler(Looper.getMainLooper())
     val Tiempo_palabra= 1000L
-    private var N =1000
+    private var N =60000
 
     private var temporizador: CountDownTimer? = null
 
     //var baseDatos = Room.databaseBuilder(applicationContext, PuntajeDatabase::class.java, "database").allowMainThreadQueries().build()
 
     private lateinit var baseDatos: PuntajeDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
+        // Cargar la canción desde los recursos raw
+        mediaPlayerA = MediaPlayer.create(this, R.raw.samba)
+        mediaPlayerA?.start()
+
+        si = MediaPlayer.create(this,R.raw.bien)
+        derrota = MediaPlayer.create(this,R.raw.derrota)
+
+        // Configurar el OnCompletionListener para repetir la canción cuando termine
+        mediaPlayerA?.setOnCompletionListener {
+            mediaPlayerA?.start()
+        }
 
         TextView = findViewById(R.id.Palabras)
         TextViewP = findViewById(R.id.textView3)
+        imagen = findViewById(R.id.imageView6)
         P = findViewById(R.id.textView5)
+        dificultad = findViewById(R.id.textView10)
 
         a = getString(R.string.a)
         b = getString(R.string.b)
@@ -120,21 +145,33 @@ class Juego : AppCompatActivity(),
         }.start()
     }
 
+    @SuppressLint("ResourceType")
     private fun mostrarPalabra() {
         Accion=true //funciona para cuando se acierte una ves no le de mas puntos de lo normal
         TextView.text = getString(R.string.esperando)
         P.text = Puntaje.toString()
+        dificultad.text = getString(dificultadActual)
+        imagen.setImageResource(R.drawable.baseline_star_border_purple500_24)
 
         handler.postDelayed({
             if (!juegoTerminado) {
                 Accion = false
                 val numeroAleatorio = random.nextInt(palabra.size)
                 palabraActual = when (numeroAleatorio) {
-                    0 ->a
-                    1 ->b
-                    2->c
-                    3->d
-                    else -> e
+                    0 -> {imagen.setImageResource(R.drawable.baseline_vibration_24)
+                        a
+                        }
+                    1 ->{imagen.setImageResource(R.drawable.baseline_ads_click_25)
+                        b
+                        }
+                    2->{imagen.setImageResource(R.drawable.baseline_ads_click_24)
+                        c
+                        }
+                    3->{ imagen.setImageResource(R.drawable.baseline_arrow_forward_24)
+                        d
+                       }
+                    else -> {imagen.setImageResource(R.drawable.baseline_arrow_upward_24)
+                        e }
                 }
                 TextView.text = palabraActual
             }},Tiempo_palabra)
@@ -142,6 +179,9 @@ class Juego : AppCompatActivity(),
     fun Correcto() {
         Accion=true
         Puntaje++
+        aciertos++
+        si.start()
+        DificultadPartida()
         reiniciar()
         mostrarPalabra()
     }
@@ -150,7 +190,27 @@ class Juego : AppCompatActivity(),
             TextView.text = getString(R.string.D)
             juegoTerminado = true
         }
+        derrota.start()
+        imagen.setImageResource(R.drawable.baseline_disabled_by_default_24)
         mostrarDialogoIngresoDatos()
+    }
+
+    fun DificultadPartida(){
+        if(aciertos==9)
+        {
+            dificultadActual = R.string.M
+            N = 30000
+        }
+        else if(aciertos==16)
+        {
+            dificultadActual= R.string.Di
+            N = 10000
+        }
+        else if(aciertos==30)
+        {
+            dificultadActual= R.string.I
+            N = 3000
+        }
     }
 
 
@@ -186,7 +246,11 @@ class Juego : AppCompatActivity(),
         val magnitudAceleracion = Math.sqrt((x * x + y * y + z * z).toDouble()).toFloat()
         val umbralMovimientoRapido = 18.0
         if(!Accion) {
+            handlerD.postDelayed({if(magnitudAceleracion > umbralMovimientoRapido){
+                InCorrecto()
+            }},Tiempo_palabra)
             if (magnitudAceleracion > umbralMovimientoRapido && palabraActual == a) {
+                handlerD.removeCallbacksAndMessages(null)
                 Correcto()
             }
         }
@@ -208,7 +272,11 @@ class Juego : AppCompatActivity(),
 
     override fun onSingleTapUp(e: MotionEvent): Boolean {
         if(!Accion) {
+            handlerD.postDelayed({if(palabraActual != b){
+                InCorrecto()
+            }},Tiempo_palabra)
             if (palabraActual == b) {
+                handlerD.removeCallbacksAndMessages(null)
                 Correcto()
             }
         }
@@ -222,7 +290,11 @@ class Juego : AppCompatActivity(),
         distanceY: Float
     ): Boolean {
         if(!Accion){
+            handlerD.postDelayed({if(palabraActual != d){
+                InCorrecto()
+            }},Tiempo_palabra)
             if(palabraActual==d) {
+                handlerD.removeCallbacksAndMessages(null)
                 Correcto()
             }
         }
@@ -231,7 +303,11 @@ class Juego : AppCompatActivity(),
 
     override fun onLongPress(e: MotionEvent) {
         if (!Accion){
+            handlerD.postDelayed({if(palabraActual != c){
+                InCorrecto()
+            }},Tiempo_palabra)
             if (palabraActual == c) {
+                handlerD.removeCallbacksAndMessages(null)
                 Correcto()
             }
         }
@@ -244,7 +320,11 @@ class Juego : AppCompatActivity(),
         velocityY: Float
     ): Boolean {
         if(!Accion) {
+            handlerD.postDelayed({if(palabraActual != e){
+                InCorrecto()
+            }},Tiempo_palabra)
             if (palabraActual == e) {
+                handlerD.removeCallbacksAndMessages(null)
                 Correcto()
             }
         }
@@ -290,7 +370,8 @@ class Juego : AppCompatActivity(),
 
         // Mostrar el puntaje actual
         textViewPuntaje.text = getString(R.string.PuntajeA)+":$Puntaje"
-
+        mediaPlayerA?.stop()
+        mediaPlayerA?.release()
         // Configurar el comportamiento de los botones
         botonCancelar.setOnClickListener {
             val intent = Intent(this@Juego, Menu::class.java)

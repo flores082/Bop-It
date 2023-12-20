@@ -60,4 +60,9 @@
         tiene sus variables de puntos e información para guardar como nombre, fecha y hora.
         También otras implementaciones de arte sonidos, música y etc…
     </string>
+
+    <string name="F">Facil</string>
+    <string name="M">Medio</string>
+    <string name="Di">Dificil</string>
+    <string name="I">Insano</string>
 </resources>
