@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -21,12 +22,12 @@ import kotlinx.coroutines.launch
 
 class Puntaje_Guardado : AppCompatActivity() {
 
-    private lateinit var listaChistes: ListView
+    private lateinit var lista: ListView
     private lateinit var List: MutableList<Puntaje>
-    private lateinit var adapter : ArrayAdapter<String>
+    private lateinit var adapter : ArrayAdapter<Puntaje>
     private lateinit var baseDatos: PuntajeDatabase
 
-    val juegoInstancia = Juego()
+    private lateinit var textView: TextView
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,38 +42,40 @@ class Puntaje_Guardado : AppCompatActivity() {
 
         val users: List<Puntaje> = ProdDao.getAll()
 
-        listaChistes = findViewById(R.id.ListView)
+        lista = findViewById(R.id.ListView)
 
         List = users.toMutableList()
 
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, List.map { it.nombre })
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, List)
 
-        listaChistes.adapter = adapter
+        lista.adapter = adapter
 
+        adapter.notifyDataSetChanged()
+        puntajeMayor()
 
-        listaChistes.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            var selectedItem = parent.getItemAtPosition(position) as String
-
+        lista.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            var selectedItem = parent.getItemAtPosition(position) as Puntaje
             // Aquí accedes al elemento seleccionado y puedes realizar acciones con él
             editProducto(selectedItem)
         }
 
     }
 
-    fun editProducto(itemSeleccionado: String) {
+    fun editProducto(puntaje: Puntaje) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Eliminar Chiste?")
 
         builder.setPositiveButton("Eliminar Chiste") { dialog, _ ->
             val ProdDao = baseDatos.puntajeDao()
-            ProdDao.delete(ProdDao.findByName(itemSeleccionado))
+            ProdDao.delete(ProdDao.findByNombreFechaHora(puntaje.nombre,puntaje.fecha,puntaje.hora)!!)
             Log.i("AAAAA", "ELIMINADO")
             val users: List<Puntaje> = ProdDao.getAll()
-
             //chists.clear()
             adapter.clear()
-            adapter.addAll(users.toMutableList().map { it.nombre })
+            adapter.addAll(users.toMutableList())
             adapter.notifyDataSetChanged()
+
+            puntajeMayor()
 
             dialog.dismiss()
         }
@@ -86,6 +89,17 @@ class Puntaje_Guardado : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun puntajeMayor(){
+        textView = findViewById(R.id.textViewPuntajeMayor)
+
+        val maxNombre = List.maxByOrNull { it.puntaje }?.nombre ?: 0
+        val maxFecha = List.maxByOrNull { it.puntaje }?.fecha ?: 0
+        val maxHora = List.maxByOrNull { it.puntaje }?.hora ?: 0
+        val maxPuntaje = List.maxByOrNull { it.puntaje }?.puntaje ?: 0
+
+        textView.text = "Nombre: $maxNombre\nFecha: $maxFecha\nHora: $maxHora\nPuntaje: $maxPuntaje"
     }
 
 }
