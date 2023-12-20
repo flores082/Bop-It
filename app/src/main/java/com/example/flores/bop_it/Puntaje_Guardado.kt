@@ -86,7 +86,6 @@ class Puntaje_Guardado : AppCompatActivity() {
             // Puedes realizar acciones adicionales al hacer clic en Cancelar
         }
 
-
         val dialog = builder.create()
         dialog.show()
     }
