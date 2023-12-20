@@ -2,4 +2,4 @@ Proyecto opcional: Este proyecto trata de terminar el bopit, dejandolo terminado
 
 Video:
 
-Apk:
+Apk: https://drive.google.com/drive/folders/1cw8PVbneQVFs_URelm462Thk96V79iim?usp=sharing
