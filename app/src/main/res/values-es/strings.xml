@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bop-it!</string>
     <string name="ir_menu">Ir a menú</string>
     <string name="ir_menu_verdadero">Si volver a mostrar</string>
-    <string name="ir_menu_falso">Si volver a mostrar</string>
+    <string name="ir_menu_falso">No volver a mostrar</string>
     <string name="cambio">mostrar intruciones</string>
 
     <string name="Juego">Jugar</string>

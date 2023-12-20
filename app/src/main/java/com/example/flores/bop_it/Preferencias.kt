@@ -14,7 +14,7 @@ class Preferencias : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intrucciones_volver)
+        setContentView(R.layout.activity_preferencias)
 
         val verdadero: Button = findViewById(R.id.button3)
         val falso: Button = findViewById(R.id.button4)

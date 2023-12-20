@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bop-it!</string>
+    <string name="ir_menu">Go to menu</string>
+    <string name="ir_menu_verdadero">Whether to show again</string>
+    <string name="ir_menu_falso">Do not show again</string>
+    <string name="cambio">show instructions</string>
+
+    <string name="Juego">Play</string>
+    <string name="Puntaje">Saved Score</string>
+    <string name="Preferencia">Preferences</string>
+    <string name="Presentacion">Presentation</string>
+    <string name="Salir">Exit Game</string>
+
+    <string name="intruccion">
+        When you start the application, you can see the menu screen, which will allow us to travel through the screens,
+        it has an exit button from the game, a presentation button where you can get to know me, a preferences button
+        if you want to change something in the application, one that would show the scores on the screen and also
+        the highest. Finally, also a button to Play the game. Words will come out and you have to do what they tell you.
+        press, shake, etc.... you will have points for each correct one and if you make a mistake once the game is over,
+        you will have the option to save your score at the end.
+    </string>
+
+    <string name="P">Score</string>
+    <string name="esperando">Waiting Word</string>
+    <string name="D">Game Over</string>
+
+    <string name="a">Shake</string>
+    <string name="b">Press once</string>
+    <string name="c">Hold down</string>
+    <string name="d">Displace</string>
+    <string name="e">Launch</string>
+</resources>
