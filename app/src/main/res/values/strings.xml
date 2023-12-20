@@ -34,4 +34,10 @@
     <string name="Fecha">Fecha</string>
     <string name="Hora">Hora</string>
     <string name="PuntajeA">Puntaje</string>
+
+    <string name="si">SI</string>
+    <string name="no">NO</string>
+    <string name="pedido">Desea que se muestre la pantalla de instrucciones.</string>
+    <string name="explicacion">En el futuro habrá mas posibilidades de cambios, mientras disfruta lo que ya esta.</string>
+    <string name="V">volver a menú</string>
 </resources>

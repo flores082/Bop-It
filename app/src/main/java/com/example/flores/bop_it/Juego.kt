@@ -23,6 +23,7 @@ import androidx.room.Room
 import com.example.flores.bop_it.Dao.PuntajeDatabase
 import com.example.flores.bop_it.Entity.Puntaje
 import android.content.Context
+import android.view.View
 
 
 class Juego : AppCompatActivity(),
@@ -94,6 +95,13 @@ class Juego : AppCompatActivity(),
 
         mostrarPalabra()
         Play()
+
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                )
+        actionBar?.hide()
     }
     fun reiniciar(){
         temporizador?.cancel()

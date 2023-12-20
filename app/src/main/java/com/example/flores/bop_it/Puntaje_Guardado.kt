@@ -1,12 +1,14 @@
 package com.example.flores.bop_it
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -28,6 +30,9 @@ class Puntaje_Guardado : AppCompatActivity() {
     private lateinit var baseDatos: PuntajeDatabase
 
     private lateinit var textView: TextView
+
+    private lateinit var mediaPlayer: MediaPlayer
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +63,17 @@ class Puntaje_Guardado : AppCompatActivity() {
             // Aquí accedes al elemento seleccionado y puedes realizar acciones con él
             editProducto(selectedItem)
         }
+
+        val menu: Button = findViewById(R.id.button8)
+        mediaPlayer = MediaPlayer.create(this, R.raw.precionar)
+
+        menu.setOnClickListener {
+            mediaPlayer.start()
+            val intent = Intent(this@Puntaje_Guardado, Menu::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
     }
 
